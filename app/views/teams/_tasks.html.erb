@@ -1,0 +1,15 @@
+<ul class="list-unstyled">
+  <% tasks.each do |task| %>
+    <li class="mb-3">
+      <div>
+        <%= link_to task.title, task_path(task) %> <span class="text-muted">updated at <%= task.updated_at %></span>
+      </div>
+      <div>
+        <p><%= task.progress %></p>
+      </div>
+      <div>
+        <p><%= task.due_date %></p>
+      </div>
+    </li>
+  <% end %>    
+</ul>

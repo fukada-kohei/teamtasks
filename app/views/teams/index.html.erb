@@ -1,0 +1,17 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <div class="pb-3">
+      <h4>Create Team</h4>
+    </div>
+    <%= form_with(model: @team, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :team_name, 'Team Name' %>
+        <%= f.text_field :team_name, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Create', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </aside>
+  <div class="col-sm-8">
+    <%= render 'teams', teams: @teams %>
+  </div>
+</div>

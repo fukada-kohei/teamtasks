@@ -1,0 +1,26 @@
+<h2>タスク編集</h2>
+
+
+    <%= form_with(model: @task, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :title, 'Task' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content, 'Detail' %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :progress, 'Progress' %>
+        <%= f.text_field :progress, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :due_date, 'Due date' %>
+        <%= f.date_field :due_date, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit 'edit', class: 'btn btn-warning btn-block' %>
+    <% end %>
+    
+<p><%= link_to '戻る', @task %></p>
+    

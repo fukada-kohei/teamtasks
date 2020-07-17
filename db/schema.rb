@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_141510) do
+ActiveRecord::Schema.define(version: 2020_07_12_142225) do
+
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_relationships_on_team_id"
+    t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.bigint "team_id"
+    t.string "progress"
+    t.date "due_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_tasks_on_team_id"
+  end
+
+  create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "team_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -20,4 +46,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_141510) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "relationships", "teams"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "tasks", "teams"
 end

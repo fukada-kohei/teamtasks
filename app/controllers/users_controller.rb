@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @joined_teams = @user.joined_teams.page(params[:page])
   end
 
   def new
